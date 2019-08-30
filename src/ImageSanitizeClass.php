@@ -4,15 +4,15 @@ namespace LaravelAt\ImageSanitize;
 
 class ImageSanitizeClass
 {
-    /**
-     * Create a new Skeleton Instance.
-     */
-    public function __construct()
-    {
-        // constructor body
-    }
+    protected $imageMimeTypes = [
+        'image/jpeg',
+        'image/gif',
+        'image/png',
+        'image/bmp',
+        'image/svg+xml',
+    ];
 
-    public static function handle($request)
+    public function handle($request)
     {
         $files = $request->allFiles();
 
@@ -20,9 +20,12 @@ class ImageSanitizeClass
             return $request;
         }
 
-        foreach ($files as $file) {
-            //check if its an image
-            // if so compress
+        $images = array_filter($files, function($file) {
+           return in_array(mime_content_type($file->getPathname()), $this->imageMimeTypes);
+        });
+
+        foreach($images as $image){
+            // compress
             // and replace request
         }
 

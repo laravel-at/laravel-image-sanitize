@@ -19,7 +19,6 @@ class ImageSanitizeMiddleware
     {
         $request = ImageSanitizeClass::handle($request);
 
-
         return $next($request);
     }
 }
