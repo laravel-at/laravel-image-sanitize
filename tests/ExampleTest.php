@@ -3,16 +3,18 @@
 namespace LaravelAt\ImageSanitize\Tests;
 
 use Illuminate\Http\Request;
+use LaravelAt\ImageSanitize\ImageSanitizeClass;
 use LaravelAt\ImageSanitize\Middlewares\ImageSanitizeMiddleware;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
     /** @test */
-    public function it_detects_embeeded_phar_code()
+    public function it_detects_embedded_malicious_code()
     {
         $content = file_get_contents('../stubs/exploit.jpeg');
 
+        $this->assertTrue((new ImageSanitizeClass)->detect($content));
     }
 
     /** @test */

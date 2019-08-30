@@ -4,6 +4,8 @@ namespace LaravelAt\ImageSanitize;
 
 class ImageSanitizeClass
 {
+    protected $rules = ['<?php', 'phar'];
+
     /**
      * Create a new Skeleton Instance.
      */
@@ -27,5 +29,18 @@ class ImageSanitizeClass
         }
 
         return $request;
+    }
+
+    public function detect(string $string) : bool
+    {
+        foreach($this->rules as $rule)
+        {
+            if(strpos($string, $rule) !== false)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
