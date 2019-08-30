@@ -9,6 +9,13 @@ use PHPUnit\Framework\TestCase;
 class ExampleTest extends TestCase
 {
     /** @test */
+    public function it_detects_embeeded_phar_code()
+    {
+        $content = file_get_contents('../stubs/exploit.jpeg');
+
+    }
+
+    /** @test */
     public function true_is_true()
     {
         $request = new Request;
