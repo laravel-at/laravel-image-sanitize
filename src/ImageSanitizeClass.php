@@ -2,6 +2,8 @@
 
 namespace LaravelAt\ImageSanitize;
 
+use Intervention\Image\Image;
+
 class ImageSanitizeClass
 {
     protected $rules = ['<?php', 'phar'];
@@ -18,7 +20,7 @@ class ImageSanitizeClass
     {
         $files = $request->allFiles();
 
-        if(! $files) {
+        if (! $files) {
             return $request;
         }
 
@@ -31,16 +33,19 @@ class ImageSanitizeClass
         return $request;
     }
 
-    public function detect(string $string) : bool
+    public function detect(string $string): bool
     {
-        foreach($this->rules as $rule)
-        {
-            if(strpos($string, $rule) !== false)
-            {
+        foreach ($this->rules as $rule) {
+            if (strpos($string, $rule) !== false) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public function sanitize(string $content)
+    {
+        return (new Image)->make($content)->encode();
     }
 }
