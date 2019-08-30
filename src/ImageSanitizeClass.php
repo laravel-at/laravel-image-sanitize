@@ -4,6 +4,11 @@ namespace LaravelAt\ImageSanitize;
 
 class ImageSanitizeClass
 {
+    protected $rules = [
+        '<?php',
+        'phar'
+    ];
+
     protected $imageMimeTypes = [
         'image/jpeg',
         'image/gif',
@@ -11,6 +16,14 @@ class ImageSanitizeClass
         'image/bmp',
         'image/svg+xml',
     ];
+
+    /**
+     * Create a new Skeleton Instance.
+     */
+    public function __construct()
+    {
+        // constructor body
+    }
 
     public function handle($request)
     {
@@ -30,5 +43,18 @@ class ImageSanitizeClass
         }
 
         return $request;
+    }
+
+    public function detect(string $string) : bool
+    {
+        foreach($this->rules as $rule)
+        {
+            if(strpos($string, $rule) !== false)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
