@@ -2,7 +2,7 @@
 
 namespace Spatie\Skeleton;
 
-class SkeletonClass
+class ImageSanitizeClass
 {
     /**
      * Create a new Skeleton Instance.

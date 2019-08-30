@@ -4,7 +4,7 @@ namespace Spatie\Skeleton;
 
 use Illuminate\Support\ServiceProvider;
 
-class SkeletonServiceProvider extends ServiceProvider
+class ImageSanitizeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -13,7 +13,7 @@ class SkeletonServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('skeleton.php'),
+                __DIR__.'/../config/config.php' => config_path('image-sanitize.php'),
             ], 'config');
 
             /*
@@ -31,6 +31,6 @@ class SkeletonServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'skeleton');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'image-sanitize');
     }
 }

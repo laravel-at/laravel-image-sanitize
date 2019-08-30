@@ -1,22 +1,23 @@
 {
-    "name": "spatie/:package_name",
+    "name": "laravel-at/laravel-image-sanitize",
     "description": ":package_description",
     "keywords": [
-        "spatie",
-        ":package_name"
+        "image",
+        "laravel-image-sanitize"
     ],
-    "homepage": "https://github.com/spatie/:package_name",
+    "homepage": "https://github.com/laravel-at/laravel-image-sanitize",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Adrian Nürnberger",
+            "email": "adrian@nuernberger.me",
+            "homepage": "https://nuernberger.me",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.2",
+        "intervention/image": "^2.5"
     },
     "require-dev": {
         "larapack/dd": "^1.0",
@@ -24,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "LaravelAt\\ImageSanitize\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "LaravelAt\\ImageSanitize\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "LaravelAt\\ImageSanitize\\ImageSanitizeServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "ImageSanitize": "LaravelAt\\ImageSanitize\\ImageSanitizeFacade"
             }
         }
     }
