@@ -4,7 +4,7 @@ namespace LaravelAt\ImageSanitize;
 
 class ImageSanitizeClass
 {
-    protected $rules = [
+    protected $forbiddenPatterns = [
         '<?php',
         'phar'
     ];
@@ -16,14 +16,6 @@ class ImageSanitizeClass
         'image/bmp',
         'image/svg+xml',
     ];
-
-    /**
-     * Create a new Skeleton Instance.
-     */
-    public function __construct()
-    {
-        // constructor body
-    }
 
     public function handle($request)
     {
@@ -47,9 +39,9 @@ class ImageSanitizeClass
 
     public function detect(string $string) : bool
     {
-        foreach($this->rules as $rule)
+        foreach($this->forbiddenPatterns as $forbiddenPattern)
         {
-            if(strpos($string, $rule) !== false)
+            if(strpos($string, $forbiddenPattern) !== false)
             {
                 return true;
             }
