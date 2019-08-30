@@ -20,6 +20,7 @@
         "intervention/image": "^2.5"
     },
     "require-dev": {
+        "illuminate/http": "^5.8",
         "larapack/dd": "^1.0",
         "phpunit/phpunit": "^8.2"
     },
