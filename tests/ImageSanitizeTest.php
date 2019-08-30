@@ -5,7 +5,7 @@ namespace LaravelAt\ImageSanitize\Tests;
 use PHPUnit\Framework\TestCase;
 use LaravelAt\ImageSanitize\ImageSanitizeClass;
 
-class ExampleTest extends TestCase
+class ImageSanitizeTest extends TestCase
 {
     /** @test */
     public function it_detects_embedded_malicious_code()
