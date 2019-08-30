@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Skeleton;
+namespace LaravelAt\ImageSanitize;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Spatie\Skeleton\ImageSanitizeClass
+ * @see \LaravelAt\ImageSanitize\ImageSanitizeClass
  */
 class ImageSanitizeFacade extends Facade
 {

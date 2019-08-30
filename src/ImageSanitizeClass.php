@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton;
+namespace LaravelAt\ImageSanitize;
 
 class ImageSanitizeClass
 {
@@ -12,14 +12,20 @@ class ImageSanitizeClass
         // constructor body
     }
 
-    /**
-     * Friendly welcome.
-     *
-     * @param string $phrase Phrase to return
-     * @return string Returns the phrase passed in
-     */
-    public function echoPhrase($phrase)
+    public static function handle($request)
     {
-        return $phrase;
+        $files = $request->allFiles();
+
+        if(! $files) {
+            return $request;
+        }
+
+        foreach ($files as $file) {
+            //check if its an image
+            // if so compress
+            // and replace request
+        }
+
+        return $request;
     }
 }

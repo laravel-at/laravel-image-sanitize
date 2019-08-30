@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton;
+namespace LaravelAt\ImageSanitize;
 
 use Illuminate\Support\ServiceProvider;
 
