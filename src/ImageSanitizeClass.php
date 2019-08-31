@@ -25,11 +25,7 @@ class ImageSanitizeClass
             return $request;
         }
 
-        $images = array_filter($files, function($file) {
-           return in_array(mime_content_type($file->getPathname()), $this->imageMimeTypes);
-        });
-
-        foreach($images as $image){
+        foreach($this->getImages($files) as $image){
             // compress
             // and replace request
         }
@@ -48,5 +44,16 @@ class ImageSanitizeClass
         }
 
         return false;
+    }
+
+    /**
+     * @param $files
+     * @return array
+     */
+    public function getImages($files): array
+    {
+        return array_filter($files, function ($file) {
+            return in_array(mime_content_type($file->getPathname()), $this->imageMimeTypes);
+        });
     }
 }
