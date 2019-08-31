@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelAt\ImageSanitize;
+namespace LaravelAt\ImageSanitize\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelAt\ImageSanitize;
+namespace LaravelAt\ImageSanitize\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
