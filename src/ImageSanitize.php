@@ -2,6 +2,7 @@
 
 namespace LaravelAt\ImageSanitize;
 
+use Illuminate\Http\UploadedFile;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ImageSanitize
@@ -27,7 +28,7 @@ class ImageSanitize
             return $request;
         }
 
-        /** @var \Illuminate\Http\UploadedFile $image */
+        /** @var UploadedFile $image */
         foreach($this->getImages($files) as $image){
             // compress
             // and replace request
