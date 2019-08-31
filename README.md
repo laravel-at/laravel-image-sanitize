@@ -36,7 +36,7 @@ Route::post('/files', 'FileController@upload')`
     ->middleware(['image-sanitize']);
 ```
 
-If you want to know more about how `middlewares work in general, please check out the [official Laravel documentation](https://www.laravel.com/documentation)
+If you want to learn more about `middlewares`, please check out the [official Laravel documentation](https://laravel.com/docs/master/middleware)
 
 ### Testing
 
