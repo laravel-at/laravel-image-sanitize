@@ -1,10 +1,5 @@
 # Prevent malicious code execution
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
-[![Build Status](https://img.shields.io/travis/laravel-at/laravel-image-sanitize/master.svg?style=flat-square)](https://travis-ci.org/laravel-at/laravel-image-sanitize)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-at/laravel-image-sanitize)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
-
 A small but handy package to prevent malicious code execution coming into your application through uploaded image files.
 
 ## Installation
@@ -17,9 +12,31 @@ composer require laravel-at/laravel-image-sanitize
 
 ## Usage
 
+Register the `ImageSanitizeMiddleware` in your `App\Http\Kernel` class
 ``` php
-// TBD
+protected $routeMiddleware = [
+    // ...
+    'image-sanitize' => ImageSanitizeMiddleware::class,
+];  
+
 ```
+
+Then, just use it in your Controller's constructor
+``` php
+public function __construct()
+{
+    $this->middleware('image-sanitize');
+}
+```
+
+Or use it in your `routes/web.php` file
+``` php
+Route::post('/files', 'FileController@upload')`
+    ->name('file.upload')
+    ->middleware(['image-sanitize']);
+```
+
+If you want to know more about how `middlewares work in general, please check out the [official Laravel documentation](https://www.laravel.com/documentation)
 
 ### Testing
 
