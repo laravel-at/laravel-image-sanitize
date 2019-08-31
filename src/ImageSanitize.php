@@ -2,61 +2,30 @@
 
 namespace LaravelAt\ImageSanitize;
 
-use Illuminate\Http\UploadedFile;
+use LaravelAt\ImageSanitize\Lists\PatternList;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ImageSanitize
 {
-    protected $forbiddenPatterns = [
-        '<?php',
-        'phar',
-    ];
+    /**
+     * @var PatternList
+     */
+    private $patternList;
 
-    protected $imageMimeTypes = [
-        'image/jpeg',
-        'image/gif',
-        'image/png',
-        'image/bmp',
-        'image/svg+xml',
-    ];
-
-    public function handle($request)
+    public function __construct(PatternList $patternList)
     {
-        $files = $request->allFiles();
-
-        if (! $files) {
-            return $request;
-        }
-
-        /** @var UploadedFile $image */
-        foreach($this->getImages($files) as $image){
-            // compress
-            // and replace request
-        }
-
-        return $request;
+        $this->patternList = $patternList;
     }
 
     public function detect(string $content): bool
     {
-        foreach ($this->forbiddenPatterns as $forbiddenPattern) {
+        foreach ($this->patternList->get() as $forbiddenPattern) {
             if (strpos($content, $forbiddenPattern) !== false) {
                 return true;
             }
         }
 
         return false;
-    }
-
-    /**
-     * @param $files
-     * @return array
-     */
-    public function getImages($files): array
-    {
-        return array_filter($files, function ($file) {
-            return in_array(mime_content_type($file->getPathname()), $this->imageMimeTypes);
-        });
     }
 
     public function sanitize(string $content)
