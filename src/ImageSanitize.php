@@ -2,11 +2,13 @@
 
 namespace LaravelAt\ImageSanitize;
 
-class ImageSanitizeClass
+use Intervention\Image\ImageManagerStatic as Image;
+
+class ImageSanitize
 {
     protected $forbiddenPatterns = [
         '<?php',
-        'phar'
+        'phar',
     ];
 
     protected $imageMimeTypes = [
@@ -21,10 +23,11 @@ class ImageSanitizeClass
     {
         $files = $request->allFiles();
 
-        if(! $files) {
+        if (! $files) {
             return $request;
         }
 
+        /** @var \Illuminate\Http\UploadedFile $image */
         foreach($this->getImages($files) as $image){
             // compress
             // and replace request
@@ -33,12 +36,10 @@ class ImageSanitizeClass
         return $request;
     }
 
-    public function detect(string $string) : bool
+    public function detect(string $content): bool
     {
-        foreach($this->forbiddenPatterns as $forbiddenPattern)
-        {
-            if(strpos($string, $forbiddenPattern) !== false)
-            {
+        foreach ($this->forbiddenPatterns as $forbiddenPattern) {
+            if (strpos($content, $forbiddenPattern) !== false) {
                 return true;
             }
         }
@@ -55,5 +56,10 @@ class ImageSanitizeClass
         return array_filter($files, function ($file) {
             return in_array(mime_content_type($file->getPathname()), $this->imageMimeTypes);
         });
+    }
+
+    public function sanitize(string $content)
+    {
+        return Image::make($content)->encode();
     }
 }

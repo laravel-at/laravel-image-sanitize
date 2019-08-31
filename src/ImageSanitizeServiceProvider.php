@@ -12,9 +12,9 @@ class ImageSanitizeServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('image-sanitize.php'),
-            ], 'config');
+            // $this->publishes([
+            //     __DIR__.'/../config/config.php' => config_path('image-sanitize.php'),
+            // ], 'config');
 
             /*
             $this->loadViewsFrom(__DIR__.'/../resources/views', 'skeleton');
@@ -31,6 +31,6 @@ class ImageSanitizeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'image-sanitize');
+        //$this->mergeConfigFrom(__DIR__.'/../config/config.php', 'image-sanitize');
     }
 }

@@ -5,7 +5,7 @@ namespace LaravelAt\ImageSanitize;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \LaravelAt\ImageSanitize\ImageSanitizeClass
+ * @see \LaravelAt\ImageSanitize\ImageSanitize
  */
 class ImageSanitizeFacade extends Facade
 {
@@ -16,6 +16,6 @@ class ImageSanitizeFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'ImageSanitize';
+        return 'image-sanitize';
     }
 }

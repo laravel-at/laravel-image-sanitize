@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.2",
-        "intervention/image": "^2.5"
+        "illuminate/support": " 5.8.*|^6.0",
+        "intervention/image": "^2.5",
+        "ext-fileinfo": "*"
     },
     "require-dev": {
-        "illuminate/http": "^5.8",
-        "larapack/dd": "^1.0",
-        "phpunit/phpunit": "^8.2"
+        "orchestra/testbench": "^3.5|^3.6|^3.7|^3.8|^4.0"
     },
     "autoload": {
         "psr-4": {
