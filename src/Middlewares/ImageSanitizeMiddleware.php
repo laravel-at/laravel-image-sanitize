@@ -3,7 +3,7 @@
 namespace LaravelAt\ImageSanitize\Middlewares;
 
 use Closure;
-use LaravelAt\ImageSanitize\ImageSanitizeClass;
+use LaravelAt\ImageSanitize\ImageSanitize;
 
 class ImageSanitizeMiddleware
 {
@@ -17,7 +17,7 @@ class ImageSanitizeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $request = ImageSanitizeClass::handle($request);
+        $request = ImageSanitize::handle($request);
 
         return $next($request);
     }
