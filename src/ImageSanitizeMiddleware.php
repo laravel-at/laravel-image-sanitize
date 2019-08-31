@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelAt\ImageSanitize\Middlewares;
+namespace LaravelAt\ImageSanitize;
 
 use Closure;
-use LaravelAt\ImageSanitize\ImageSanitize;
+use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class ImageSanitizeMiddleware
 {
@@ -11,14 +11,13 @@ class ImageSanitizeMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $request = ImageSanitize::handle($request);
-
+        (new RequestHandler(new MimeTypeList))->handle($request);
         return $next($request);
     }
 }
