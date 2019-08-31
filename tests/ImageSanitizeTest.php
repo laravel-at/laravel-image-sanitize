@@ -35,14 +35,14 @@ class ImageSanitizeTest extends TestCase
         $request->files->set('image', UploadedFile::fake()->image('image.jpeg'));
         $request->files->set('pdf', UploadedFile::fake()->create('document.pdf'));
 
-        $imageSanitizeClass = new ImageSanitizeClass();
+        $ImageSanitize = new ImageSanitize();
         $this->assertArrayHasKey(
             'image',
-            $imageSanitizeClass->getImages($request->allFiles())
+            $ImageSanitize->getImages($request->allFiles())
         );
         $this->assertArrayNotHasKey(
             'pdf',
-            $imageSanitizeClass->getImages($request->allFiles())
+            $ImageSanitize->getImages($request->allFiles())
         );
     }
 }
