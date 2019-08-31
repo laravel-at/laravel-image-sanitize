@@ -13,6 +13,12 @@
             "email": "adrian@nuernberger.me",
             "homepage": "https://nuernberger.me",
             "role": "Developer"
+        },
+        {
+            "name": "Mathias Onea",
+            "email": "office@mathiasonea.at",
+            "homepage": "https://www.mathiasonea.at",
+            "role": "Developer"
         }
     ],
     "require": {
