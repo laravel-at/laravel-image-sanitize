@@ -1,6 +1,6 @@
 {
     "name": "laravel-at/laravel-image-sanitize",
-    "description": ":package_description",
+    "description": "A small but handy package to prevent malicious code execution coming into your application through uploaded image files.",
     "keywords": [
         "image",
         "laravel-image-sanitize"
