@@ -23,8 +23,10 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/support": " 5.8.*|^6.0",
+        "illuminate/support": "~5.8|^6.0",
         "intervention/image": "^2.5",
+        "illuminate/container": "~5.8|^6.0",
+        "illuminate/contracts": "~5.8|^6.0",
         "ext-fileinfo": "*"
     },
     "require-dev": {
@@ -43,7 +45,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true

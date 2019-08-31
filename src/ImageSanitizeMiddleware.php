@@ -3,7 +3,6 @@
 namespace LaravelAt\ImageSanitize;
 
 use Closure;
-use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class ImageSanitizeMiddleware
 {
@@ -17,7 +16,7 @@ class ImageSanitizeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        (new RequestHandler(new MimeTypeList))->handle($request);
+        app(RequestHandler::class)->handle($request);
         return $next($request);
     }
 }

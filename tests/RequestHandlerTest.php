@@ -5,12 +5,9 @@ namespace LaravelAt\ImageSanitize\Tests;
 
 
 use Illuminate\Http\Request;
-use PHPUnit\Framework\TestCase;
 use Illuminate\Http\UploadedFile;
 use LaravelAt\ImageSanitize\ImageSanitize;
 use LaravelAt\ImageSanitize\RequestHandler;
-use LaravelAt\ImageSanitize\Lists\PatternList;
-use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class RequestHandlerTest extends TestCase
 {
@@ -22,17 +19,6 @@ class RequestHandlerTest extends TestCase
      * @var ImageSanitize
      */
     protected $sanitizer;
-
-    protected function setUp(): void
-    {
-        $this->handler = new RequestHandler(
-            new MimeTypeList
-        );
-
-        $this->sanitizer = new ImageSanitize(
-            new PatternList
-        );
-    }
 
     /** @test */
     public function it_detects_images_in_the_request(): void
@@ -55,15 +41,14 @@ class RequestHandlerTest extends TestCase
     /** @test */
     public function it_swaps_the_file_content_with_the_sanitized_string(): void
     {
-        $uploadedFile = UploadedFile::fake()->image('malicious.jpeg','100','100');
+        $uploadedFile = UploadedFile::fake()->image('malicious.jpeg', '100', '100');
         file_put_contents($uploadedFile->getPathname(), file_get_contents(__DIR__ . '/stubs/exploit.jpeg'));
 
         $request = new Request;
         $request->files->set('image', $uploadedFile);
 
         $maliciousImageContent = $request->file('image')->get();
-        $requestHandler = New RequestHandler(new MimeTypeList());
-        $requestHandler->handle($request);
+        $this->handler->handle($request);
 
         $sanitizedImageContent = $request->file('image')->get();
         $this->assertNotEquals(
@@ -71,5 +56,12 @@ class RequestHandlerTest extends TestCase
             $sanitizedImageContent
         );
         $this->assertFalse($this->sanitizer->detect($sanitizedImageContent));
+    }
+
+    protected function setUp(): void
+    {
+        $this->handler = app(RequestHandler::class);
+
+        $this->sanitizer = app(ImageSanitize::class);
     }
 }

@@ -5,15 +5,10 @@ namespace LaravelAt\ImageSanitize\Tests;
 
 use Intervention\Image\Image;
 use LaravelAt\ImageSanitize\ImageSanitize;
-use LaravelAt\ImageSanitize\ImageSanitizeServiceProvider;
+use LaravelAt\ImageSanitize\ServiceProviders\ImageSanitizeServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     protected function getPackageProviders($app)
     {
         return [ImageSanitizeServiceProvider::class];

@@ -2,9 +2,7 @@
 
 namespace LaravelAt\ImageSanitize\Tests;
 
-use PHPUnit\Framework\TestCase;
 use LaravelAt\ImageSanitize\ImageSanitize;
-use LaravelAt\ImageSanitize\Lists\PatternList;
 
 class ImageSanitizeTest extends TestCase
 {
@@ -14,7 +12,7 @@ class ImageSanitizeTest extends TestCase
         $content = file_get_contents(__DIR__ . '/stubs/exploit.jpeg');
 
         $this->assertTrue(
-            (new ImageSanitize(new PatternList()))->detect($content)
+            app(ImageSanitize::class)->detect($content)
         );
     }
 
@@ -22,11 +20,9 @@ class ImageSanitizeTest extends TestCase
     public function it_removes_malicious_code()
     {
         $content = file_get_contents(__DIR__ . '/stubs/exploit.jpeg');
-        $imageSanitize = new ImageSanitize(
-            new PatternList()
-        );
-        $secureImage = $imageSanitize->sanitize($content);
 
-        $this->assertFalse($imageSanitize->detect($secureImage));
+        $secureImage = app(ImageSanitize::class)->sanitize($content);
+
+        $this->assertFalse(app(ImageSanitize::class)->detect($secureImage));
     }
 }

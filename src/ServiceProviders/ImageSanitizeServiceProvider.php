@@ -3,6 +3,10 @@
 namespace LaravelAt\ImageSanitize\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
+use LaravelAt\ImageSanitize\ImageSanitize;
+use LaravelAt\ImageSanitize\RequestHandler;
+use LaravelAt\ImageSanitize\Lists\PatternList;
+use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class ImageSanitizeServiceProvider extends ServiceProvider
 {
@@ -11,19 +15,9 @@ class ImageSanitizeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            // $this->publishes([
-            //     __DIR__.'/../config/config.php' => config_path('image-sanitize.php'),
-            // ], 'config');
-
-            /*
-            $this->loadViewsFrom(__DIR__.'/../resources/views', 'skeleton');
-
-            $this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/skeleton'),
-            ], 'views');
-            */
-        }
+        $this->publishes([
+            __DIR__ . '/../../config/config.php' => config_path('image-sanitize.php'),
+        ], 'config');
     }
 
     /**
@@ -31,6 +25,13 @@ class ImageSanitizeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //$this->mergeConfigFrom(__DIR__.'/../config/config.php', 'image-sanitize');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'image-sanitize');
+
+        $this->app->singleton(ImageSanitize::class, function () {
+            return new ImageSanitize(new PatternList);
+        });
+        $this->app->singleton(RequestHandler::class, function () {
+            return new RequestHandler(new MimeTypeList);
+        });
     }
 }
