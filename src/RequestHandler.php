@@ -1,15 +1,12 @@
 <?php
 
-
 namespace LaravelAt\ImageSanitize;
-
 
 use Illuminate\Http\UploadedFile;
 use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class RequestHandler
 {
-
     /**
      * @var MimeTypeList
      */

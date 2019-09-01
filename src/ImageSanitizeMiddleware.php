@@ -6,7 +6,6 @@ use Closure;
 
 class ImageSanitizeMiddleware
 {
-
     /**
      * Handle an incoming request.
      *
@@ -17,6 +16,7 @@ class ImageSanitizeMiddleware
     public function handle($request, Closure $next)
     {
         app(RequestHandler::class)->handle($request);
+
         return $next($request);
     }
 }

@@ -16,7 +16,7 @@ class ImageSanitizeServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/config.php' => config_path('image-sanitize.php'),
+            __DIR__.'/../../config/config.php' => config_path('image-sanitize.php'),
         ], 'config');
     }
 
@@ -25,7 +25,7 @@ class ImageSanitizeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'image-sanitize');
+        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'image-sanitize');
 
         $this->app->singleton(ImageSanitize::class, function () {
             return new ImageSanitize(new PatternList);
