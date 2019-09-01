@@ -30,6 +30,6 @@ class ImageSanitize
 
     public function sanitize(string $content)
     {
-        return Image::make($content)->encode();
+        return Image::make($content)->encode(null, 100);
     }
 }
