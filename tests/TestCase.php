@@ -2,7 +2,6 @@
 
 namespace LaravelAt\ImageSanitize\Tests;
 
-
 use Intervention\Image\Image;
 use LaravelAt\ImageSanitize\ImageSanitize;
 use LaravelAt\ImageSanitize\ServiceProviders\ImageSanitizeServiceProvider;

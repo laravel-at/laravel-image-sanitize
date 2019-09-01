@@ -1,8 +1,6 @@
 <?php
 
-
 namespace LaravelAt\ImageSanitize\Tests;
-
 
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -42,7 +40,7 @@ class RequestHandlerTest extends TestCase
     public function it_swaps_the_file_content_with_the_sanitized_string(): void
     {
         $uploadedFile = UploadedFile::fake()->image('malicious.jpeg', '100', '100');
-        file_put_contents($uploadedFile->getPathname(), file_get_contents(__DIR__ . '/stubs/exploit.jpeg'));
+        file_put_contents($uploadedFile->getPathname(), file_get_contents(__DIR__.'/stubs/exploit.jpeg'));
 
         $request = new Request;
         $request->files->set('image', $uploadedFile);
