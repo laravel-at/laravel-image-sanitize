@@ -36,7 +36,7 @@ public function __construct()
 
 Or use it in your `routes/web.php` file
 ``` php
-Route::post('/files', 'FileController@upload')`
+Route::post('/files', 'FileController@upload')
     ->name('file.upload')
     ->middleware(['image-sanitize']);
 ```
