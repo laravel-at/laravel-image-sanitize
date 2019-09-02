@@ -52,10 +52,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelAt\\ImageSanitize\\ImageSanitizeServiceProvider"
+                "LaravelAt\\ImageSanitize\\ServiceProviders\\ImageSanitizeServiceProvider"
             ],
             "aliases": {
-                "ImageSanitize": "LaravelAt\\ImageSanitize\\ImageSanitizeFacade"
+                "ImageSanitize": "LaravelAt\\ImageSanitize\\Facades\\ImageSanitizeFacade"
             }
         }
     }
