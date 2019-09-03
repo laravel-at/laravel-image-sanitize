@@ -5,7 +5,8 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-at/laravel-image-sanitize)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
 
-A small but handy package to prevent malicious code execution coming into your application through uploaded image files.
+This is a small but handy package to prevent malicious code execution coming into your application through uploaded images.
+It was created after being inspired by [@appelsiini](https://github.com/appelsiini)'s [talk on How to Hack your Laravel Application](https://speakerdeck.com/anamus/how-your-laravel-application-can-get-hacked-f7acca32-3721-4c06-9a2e-5965cd9a4a29) 
 
 ## Installation
 
