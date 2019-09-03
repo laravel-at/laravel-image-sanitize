@@ -64,7 +64,7 @@ If you discover any security related issues, please email adrian@nuernberger.me 
 ## Credits
 
 - [Adrian Nürnberger](https://github.com/nuernbergerA)
-- [Mathias Onea](https://github.com/mathias_onea)
+- [Mathias Onea](https://github.com/mathiasonea)
 
 ## License
 
