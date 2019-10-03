@@ -1,6 +1,4 @@
-<p align="center">
-    <img width="500" height="150" alt="Laravel Image Sanitize logo" src="https://raw.githubusercontent.com/laravel-at/laravel-image-sanitize/master/art/logo.png" />
-</p>
+![Laravel Image Sanitize logo](https://raw.githubusercontent.com/laravel-at/laravel-image-sanitize/master/art/logo.png)
 
 # It prevents malicious code execution!
 
