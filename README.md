@@ -1,4 +1,8 @@
-# Prevent malicious code execution
+<p align="center">
+    <img width="500" height="150" alt="Laravel Image Sanitize logo" src="https://raw.githubusercontent.com/laravel-at/laravel-image-sanitize/docs/master/art/logo.png" />
+</p>
+
+# It prevents malicious code execution!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
 [![Build Status](https://img.shields.io/travis/laravel-at/laravel-image-sanitize/master.svg?style=flat-square)](https://travis-ci.org/laravel-at/laravel-image-sanitize)
@@ -6,7 +10,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
 
 This is a small but handy package to prevent malicious code execution coming into your application through uploaded images.
-It was created after being inspired by [@appelsiini](https://github.com/appelsiini)'s [talk on How to Hack your Laravel Application](https://speakerdeck.com/anamus/how-your-laravel-application-can-get-hacked-f7acca32-3721-4c06-9a2e-5965cd9a4a29) 
+It was created after being inspired by [@appelsiini](https://github.com/appelsiini)'s [talk on How to Hack your Laravel Application](https://speakerdeck.com/anamus/how-your-laravel-application-can-get-hacked-f7acca32-3721-4c06-9a2e-5965cd9a4a29)
 
 ## Installation
 
@@ -23,7 +27,7 @@ Register the `ImageSanitizeMiddleware` in your `App\Http\Kernel` class
 protected $routeMiddleware = [
     // ...
     'image-sanitize' => ImageSanitizeMiddleware::class,
-];  
+];
 
 ```
 
@@ -66,6 +70,7 @@ If you discover any security related issues, please email adrian@nuernberger.me 
 
 - [Adrian Nürnberger](https://github.com/nuernbergerA)
 - [Mathias Onea](https://github.com/mathiasonea)
+- Logo by [Caneco](https://github.com/caneco)
 
 ## License
 
