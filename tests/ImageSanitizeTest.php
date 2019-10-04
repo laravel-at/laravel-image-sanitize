@@ -3,6 +3,7 @@
 namespace LaravelAt\ImageSanitize\Tests;
 
 use LaravelAt\ImageSanitize\ImageSanitize;
+use LaravelAt\ImageSanitize\Facades\ImageSanitizeFacade;
 
 class ImageSanitizeTest extends TestCase
 {
@@ -14,6 +15,8 @@ class ImageSanitizeTest extends TestCase
         $this->assertTrue(
             app(ImageSanitize::class)->detect($content)
         );
+
+        $this->assertTrue(ImageSanitizeFacade::detect($content));
     }
 
     /** @test */
@@ -24,5 +27,7 @@ class ImageSanitizeTest extends TestCase
         $secureImage = app(ImageSanitize::class)->sanitize($content);
 
         $this->assertFalse(app(ImageSanitize::class)->detect($secureImage));
+
+        $this->assertFalse(ImageSanitizeFacade::detect($secureImage));
     }
 }

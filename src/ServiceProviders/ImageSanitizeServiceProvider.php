@@ -30,8 +30,11 @@ class ImageSanitizeServiceProvider extends ServiceProvider
         $this->app->singleton(ImageSanitize::class, function () {
             return new ImageSanitize(new PatternList);
         });
+
         $this->app->singleton(RequestHandler::class, function () {
             return new RequestHandler(new MimeTypeList);
         });
+
+        $this->app->alias(ImageSanitize::class, 'image-sanitize');
     }
 }
