@@ -2,18 +2,25 @@
 
 namespace LaravelAt\ImageSanitize;
 
+use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 use LaravelAt\ImageSanitize\Lists\PatternList;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class ImageSanitize
 {
     /**
+     * @var \Intervention\Image\ImageManager
+     */
+    protected $imageManager;
+
+    /**
      * @var PatternList
      */
-    private $patternList;
+    protected $patternList;
 
-    public function __construct(PatternList $patternList)
+    public function __construct(ImageManager $imageManager, PatternList $patternList)
     {
+        $this->imageManager = $imageManager;
         $this->patternList = $patternList;
     }
 
@@ -28,8 +35,8 @@ class ImageSanitize
         return false;
     }
 
-    public function sanitize(string $content)
+    public function sanitize(string $content): Image
     {
-        return Image::make($content)->encode(null, 100);
+        return $this->imageManager->make($content)->encode(null, 100);
     }
 }

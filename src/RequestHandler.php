@@ -8,35 +8,48 @@ use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 class RequestHandler
 {
     /**
+     * @var \LaravelAt\ImageSanitize\ImageSanitize
+     */
+    protected $imageSanitize;
+
+    /**
      * @var MimeTypeList
      */
     protected $mimeTypeList;
 
-    public function __construct(MimeTypeList $mimeTypeList)
+    public function __construct(ImageSanitize $imageSanitize, MimeTypeList $mimeTypeList)
     {
+        $this->imageSanitize = $imageSanitize;
         $this->mimeTypeList = $mimeTypeList;
     }
 
+    /**
+     * @param  \Illuminate\Http\Request $request
+     * @return void
+     */
     public function handle($request): void
     {
-        /** @var UploadedFile $file */
         foreach ($this->getMaliciousImages($request->allFiles()) as $file) {
-            file_put_contents($file->getPathname(), app(ImageSanitize::class)->sanitize($file->get()));
+            file_put_contents($file->getPathname(), $this->imageSanitize->sanitize($file->get()));
         }
     }
 
-    public function getMaliciousImages($files): array
+    /**
+     * @param  array|UploadedFile[] $files
+     * @return array
+     */
+    public function getMaliciousImages(array $files): array
     {
         return array_filter($this->getImages($files), function (UploadedFile $file) {
-            return app(ImageSanitize::class)->detect($file->get());
+            return $this->imageSanitize->detect($file->get());
         });
     }
 
     /**
-     * @param $files
+     * @param  array|UploadedFile[] $files
      * @return array
      */
-    public function getImages($files): array
+    public function getImages(array $files): array
     {
         return array_filter($files, function (UploadedFile $file) {
             return in_array(mime_content_type($file->getPathname()), $this->mimeTypeList->get());
