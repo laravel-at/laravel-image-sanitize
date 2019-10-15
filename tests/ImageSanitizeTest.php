@@ -12,7 +12,7 @@ class ImageSanitizeTest extends TestCase
         $content = file_get_contents(__DIR__.'/stubs/exploit.jpeg');
 
         $this->assertTrue(
-            app(ImageSanitize::class)->detect($content)
+            $this->app->make(ImageSanitize::class)->detect($content)
         );
     }
 
@@ -21,8 +21,8 @@ class ImageSanitizeTest extends TestCase
     {
         $content = file_get_contents(__DIR__.'/stubs/exploit.jpeg');
 
-        $secureImage = app(ImageSanitize::class)->sanitize($content);
+        $secureImage = $this->app->make(ImageSanitize::class)->sanitize($content);
 
-        $this->assertFalse(app(ImageSanitize::class)->detect($secureImage));
+        $this->assertFalse($this->app->make(ImageSanitize::class)->detect($secureImage));
     }
 }

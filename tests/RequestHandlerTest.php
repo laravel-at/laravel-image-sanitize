@@ -58,8 +58,10 @@ class RequestHandlerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->handler = app(RequestHandler::class);
+        parent::setUp();
 
-        $this->sanitizer = app(ImageSanitize::class);
+        $this->handler = $this->app->make(RequestHandler::class);
+
+        $this->sanitizer = $this->app->make(ImageSanitize::class);
     }
 }
