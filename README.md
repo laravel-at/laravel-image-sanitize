@@ -3,7 +3,7 @@
 # It prevents malicious code execution!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
-[![Build Status](https://img.shields.io/travis/laravel-at/laravel-image-sanitize/master.svg?style=flat-square)](https://travis-ci.org/laravel-at/laravel-image-sanitize)
+![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/laravel-at/laravel-image-sanitize/run-tests?label=tests)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-at/laravel-image-sanitize)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-at/laravel-image-sanitize.svg?style=flat-square)](https://packagist.org/packages/laravel-at/laravel-image-sanitize)
 
