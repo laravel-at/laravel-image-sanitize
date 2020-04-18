@@ -1,6 +1,3 @@
-filter:
-    excluded_paths: [tests/*]
-
 checks:
     php:
         remove_extra_empty_lines: true
@@ -16,4 +13,11 @@ checks:
         fix_line_ending: true
         fix_identation_4spaces: true
         fix_doc_comments: true
+build:
+  nodes:
+    analysis:
+      tests:
+        override: [php-scrutinizer-run]
 
+filter:
+  paths: ["src/*", "tests/*"]
