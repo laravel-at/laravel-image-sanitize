@@ -3,6 +3,7 @@
 namespace LaravelAt\ImageSanitize;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class RequestHandler
@@ -40,6 +41,10 @@ class RequestHandler
      */
     public function getMaliciousImages(array $files): array
     {
+        if (! Arr::first($files) instanceof UploadedFile) {
+            $files = collect($files)->flatten()->toArray();
+        }
+
         return array_filter($this->getImages($files), function (UploadedFile $file) {
             return $this->imageSanitize->detect($file->get());
         });
