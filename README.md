@@ -24,7 +24,7 @@ Register the `ImageSanitizeMiddleware` in your `App\Http\Kernel` class
 ``` php
 protected $routeMiddleware = [
     // ...
-    'image-sanitize' => ImageSanitizeMiddleware::class,
+    'image-sanitize' => \LaravelAt\ImageSanitize\ImageSanitizeMiddleware::class,
 ];
 
 ```
