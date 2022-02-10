@@ -3,17 +3,17 @@
 namespace LaravelAt\ImageSanitize;
 
 use Illuminate\Http\UploadedFile;
-use Illuminate\Http\Reques;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class RequestHandler
 {
-
     public function __construct(
         protected ImageSanitize $imageSanitize,
         protected MimeTypeList $mimeTypeList,
-    ) {}
+    ) {
+    }
 
     public function handle(Request $request): void
     {

@@ -11,7 +11,8 @@ class ImageSanitize
     public function __construct(
         protected ImageManager $imageManager,
         protected PatternList $patternList,
-    ) {}
+    ) {
+    }
 
     public function detect(string $content): bool
     {
