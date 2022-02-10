@@ -8,18 +8,9 @@ use LaravelAt\ImageSanitize\RequestHandler;
 
 class ImageSanitizeServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     */
-    public function boot()
-    {
-        //
-    }
+    public function boot(): void {}
 
-    /**
-     * Register the application services.
-     */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(ImageSanitize::class);
         $this->app->singleton(RequestHandler::class);

@@ -3,27 +3,15 @@
 namespace LaravelAt\ImageSanitize;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class ImageSanitizeMiddleware
 {
-    /**
-     * @var \LaravelAt\ImageSanitize\RequestHandler
-     */
-    protected $requestHandler;
+    public function __construct(
+        protected RequestHandler $requestHandler,
+    ) {}
 
-    public function __construct(RequestHandler $requestHandler)
-    {
-        $this->requestHandler = $requestHandler;
-    }
-
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $this->requestHandler->handle($request);
 

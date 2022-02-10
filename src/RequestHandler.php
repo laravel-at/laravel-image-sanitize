@@ -3,42 +3,25 @@
 namespace LaravelAt\ImageSanitize;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Http\Reques;
 use Illuminate\Support\Arr;
 use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
 class RequestHandler
 {
-    /**
-     * @var \LaravelAt\ImageSanitize\ImageSanitize
-     */
-    protected $imageSanitize;
 
-    /**
-     * @var MimeTypeList
-     */
-    protected $mimeTypeList;
+    public function __construct(
+        protected ImageSanitize $imageSanitize,
+        protected MimeTypeList $mimeTypeList,
+    ) {}
 
-    public function __construct(ImageSanitize $imageSanitize, MimeTypeList $mimeTypeList)
-    {
-        $this->imageSanitize = $imageSanitize;
-        $this->mimeTypeList = $mimeTypeList;
-    }
-
-    /**
-     * @param  \Illuminate\Http\Request $request
-     * @return void
-     */
-    public function handle($request): void
+    public function handle(Request $request): void
     {
         foreach ($this->getMaliciousImages($request->allFiles()) as $file) {
             file_put_contents($file->getPathname(), $this->imageSanitize->sanitize($file->get()));
         }
     }
 
-    /**
-     * @param  array|UploadedFile[] $files
-     * @return array
-     */
     public function getMaliciousImages(array $files): array
     {
         if (! Arr::first($files) instanceof UploadedFile) {
@@ -50,10 +33,6 @@ class RequestHandler
         });
     }
 
-    /**
-     * @param  array|UploadedFile[] $files
-     * @return array
-     */
     public function getImages(array $files): array
     {
         return array_filter($files, function (UploadedFile $file) {

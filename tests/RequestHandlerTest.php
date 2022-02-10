@@ -18,6 +18,15 @@ class RequestHandlerTest extends TestCase
      */
     protected $sanitizer;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->handler = $this->app->make(RequestHandler::class);
+
+        $this->sanitizer = $this->app->make(ImageSanitize::class);
+    }
+
     /** @test */
     public function it_detects_images_in_the_request(): void
     {
@@ -54,14 +63,5 @@ class RequestHandlerTest extends TestCase
             $sanitizedImageContent
         );
         $this->assertFalse($this->sanitizer->detect($sanitizedImageContent));
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->handler = $this->app->make(RequestHandler::class);
-
-        $this->sanitizer = $this->app->make(ImageSanitize::class);
     }
 }

@@ -8,21 +8,10 @@ use LaravelAt\ImageSanitize\Lists\PatternList;
 
 class ImageSanitize
 {
-    /**
-     * @var \Intervention\Image\ImageManager
-     */
-    protected $imageManager;
-
-    /**
-     * @var PatternList
-     */
-    protected $patternList;
-
-    public function __construct(ImageManager $imageManager, PatternList $patternList)
-    {
-        $this->imageManager = $imageManager;
-        $this->patternList = $patternList;
-    }
+    public function __construct(
+        protected ImageManager $imageManager,
+        protected PatternList $patternList,
+    ) {}
 
     public function detect(string $content): bool
     {
