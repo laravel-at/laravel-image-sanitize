@@ -2,8 +2,8 @@
 
 namespace LaravelAt\ImageSanitize;
 
-use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use LaravelAt\ImageSanitize\Lists\MimeTypeList;
 
