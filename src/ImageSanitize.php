@@ -2,17 +2,17 @@
 
 namespace LaravelAt\ImageSanitize;
 
-use Intervention\Image\Image;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\EncodedImage;
+use Intervention\Image\Encoders\AutoEncoder;
 use Intervention\Image\ImageManager;
 use LaravelAt\ImageSanitize\Lists\PatternList;
 
 class ImageSanitize
 {
     public function __construct(
-        protected ImageManager $imageManager,
         protected PatternList $patternList,
-    ) {
-    }
+    ) {}
 
     public function detect(string $content): bool
     {
@@ -25,8 +25,12 @@ class ImageSanitize
         return false;
     }
 
-    public function sanitize(string $content): Image
+    public function sanitize(string $content): EncodedImage
     {
-        return $this->imageManager->make($content)->encode(null, 100);
+        $imageManager = new ImageManager(new Driver());
+
+        $image = $imageManager->read($content);
+
+        return $image->encode(new AutoEncoder(quality: 100));
     }
 }
