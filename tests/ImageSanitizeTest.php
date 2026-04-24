@@ -3,10 +3,11 @@
 namespace LaravelAt\ImageSanitize\Tests;
 
 use LaravelAt\ImageSanitize\ImageSanitize;
+use PHPUnit\Framework\Attributes\Test;
 
 class ImageSanitizeTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_detects_embedded_malicious_code()
     {
         $content = file_get_contents(__DIR__.'/stubs/exploit.jpeg');
@@ -16,7 +17,7 @@ class ImageSanitizeTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_removes_malicious_code()
     {
         $content = file_get_contents(__DIR__.'/stubs/exploit.jpeg');
