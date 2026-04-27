@@ -3,7 +3,7 @@ name: tests
 on:
   push:
     branches:
-      - *
+      - '**'
   pull_request:
     types:
       - ready_for_review
@@ -17,8 +17,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3, 8.4]
-        laravel: ['12.*']
+        php: [8.3, 8.4, 8.5]
+        laravel: ['12.*', '13.*']
 
     name: PHP:${{ matrix.php }} / Laravel:${{ matrix.laravel }}
 

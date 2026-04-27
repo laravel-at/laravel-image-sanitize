@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use LaravelAt\ImageSanitize\ImageSanitize;
 use LaravelAt\ImageSanitize\RequestHandler;
+use PHPUnit\Framework\Attributes\Test;
 
 class RequestHandlerTest extends TestCase
 {
@@ -27,7 +28,7 @@ class RequestHandlerTest extends TestCase
         $this->sanitizer = $this->app->make(ImageSanitize::class);
     }
 
-    /** @test */
+    #[Test]
     public function it_detects_images_in_the_request(): void
     {
         $request = new Request;
@@ -45,7 +46,7 @@ class RequestHandlerTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_swaps_the_file_content_with_the_sanitized_string(): void
     {
         $uploadedFile = UploadedFile::fake()->image('malicious.jpeg', '100', '100');
