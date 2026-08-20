@@ -13,6 +13,7 @@ return [
 
     'patterns' => [
         '<?php',
+        '<?=',
         'phar',
     ],
 

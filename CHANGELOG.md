@@ -4,7 +4,9 @@ All notable changes to `laravel-image-sanitize` will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## v5.0.1 - 2026-08-21
+
+- Detect PHP short echo tags and match forbidden payload patterns in a case-insensitive way. If you have published the configuration file prior to this version, you should add `<?=` to your `patterns` array.
 
 ## v5.0.0 - 2026-06-10
 
