@@ -9,6 +9,7 @@ class PatternList
     /** @var array<int, string> */
     protected const DEFAULT_PATTERNS = [
         '<?php',
+        '<?=',
         'phar',
     ];
 

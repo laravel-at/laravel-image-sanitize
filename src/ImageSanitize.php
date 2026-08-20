@@ -23,7 +23,7 @@ class ImageSanitize
     public function detect(string $content): bool
     {
         foreach ($this->patternList->get() as $forbiddenPattern) {
-            if (strpos($content, $forbiddenPattern) !== false) {
+            if (stripos($content, $forbiddenPattern) !== false) {
                 return true;
             }
         }

@@ -135,6 +135,34 @@ class RequestHandlerTest extends TestCase
     }
 
     #[Test]
+    public function it_sanitizes_images_containing_short_echo_tags(): void
+    {
+        $uploadedFile = UploadedFile::fake()->image('malicious.jpeg', 100, 100);
+        $imageContent = $uploadedFile->get();
+        if ($imageContent === false) {
+            $this->fail('The test upload could not be read before adding the payload.');
+        }
+
+        $maliciousImageContent = $imageContent.'<?= system("id"); ?>';
+        file_put_contents($uploadedFile->getPathname(), $maliciousImageContent);
+
+        $this->assertTrue($this->sanitizer->detect($maliciousImageContent));
+
+        $request = new Request;
+        $request->files->set('image', $uploadedFile);
+
+        $this->handler->handle($request);
+
+        $sanitizedImageContent = $uploadedFile->get();
+        if ($sanitizedImageContent === false) {
+            $this->fail('The test upload could not be read after sanitization.');
+        }
+
+        $this->assertNotEquals($maliciousImageContent, $sanitizedImageContent);
+        $this->assertFalse($this->sanitizer->detect($sanitizedImageContent));
+    }
+
+    #[Test]
     public function it_fails_closed_when_an_uploaded_image_cannot_be_read(): void
     {
         $request = new Request;
